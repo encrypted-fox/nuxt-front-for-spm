@@ -21,8 +21,8 @@
           @click="alert('Заглушка')")
           circle(cx='37.5' cy='37.5' r='37.5' fill='#16171B')
           path(d='M55 37.5L28.75 52.6554L28.75 22.3446L55 37.5Z' fill='#00B275')
-    p Don’t have an account?
-      NuxtLink(to='/register') Click here
+    p Ещё нет аккаунта?
+      NuxtLink(to='/register')  Зарегистрируйтесь
 </template>
 <script>
 export default {
