@@ -18,7 +18,7 @@
           viewBox='0 0 75 75'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
-          @click="alert('Заглушка')")
+          @click="handleLogin")
           circle(cx='37.5' cy='37.5' r='37.5' fill='#16171B')
           path(d='M55 37.5L28.75 52.6554L28.75 22.3446L55 37.5Z' fill='#00B275')
     p Ещё нет аккаунта?
@@ -30,6 +30,11 @@ export default {
     return {
       title: 'Войти',
     }
+  },
+  methods: {
+    handleLogin() {
+      alert('not yet')
+    },
   },
 }
 </script>
