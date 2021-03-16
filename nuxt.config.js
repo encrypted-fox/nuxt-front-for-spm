@@ -12,6 +12,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+  router: {
+    middleware: ['/middleware/checkAuth.js'],
+  },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
