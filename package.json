@@ -7,13 +7,13 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --fix --ignore-path .gitignore .",
+    "lint:js": "eslint --fix --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "test": "jest",
-	"prettier": "prettier --write"
+    "prettier": "prettier --write"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint"
+    "*.{js,vue}": "eslint --fix"
   },
   "husky": {
     "hooks": {
@@ -24,8 +24,10 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/pwa": "^3.3.5",
+    "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
+    "pm2": "^4.5.5",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
