@@ -30,8 +30,7 @@ export const actions = {
       'https://students-monitor.herokuapp.com/api/v0/auth/token/',
       JSON.stringify({ username: user.username, password: user.password })
     )
-    const response = JSON.parse(rawResponse)
-    console.log(response)
+    const response = rawResponse
     if (response && response.access_token) {
       commit('setUser', response)
       return true
