@@ -10,13 +10,12 @@ export const getters = {
 
 export const actions = {
   async registerUser({ commit }, user) {
+    this.$axios.setHeader('Content-Type', 'application/json')
     const response = JSON.parse(
-      await this.$axios
-        .setHeader('Content-Type', 'application/json')
-        .$post(
-          'https://students-monitor.herokuapp.com/api/v0/auth/register/',
-          JSON.stringify({ username: user.username, password: user.password })
-        )
+      await this.$axios.$post(
+        'https://students-monitor.herokuapp.com/api/v0/auth/register/',
+        JSON.stringify({ username: user.username, password: user.password })
+      )
     )
 
     if (response && response.access_token) {
@@ -27,13 +26,12 @@ export const actions = {
     }
   },
   async authUser({ commit }, user) {
+    this.$axios.setHeader('Content-Type', 'application/json')
     const response = JSON.parse(
-      await this.$axios
-        .setHeader('Content-Type', 'application/json')
-        .$post(
-          'https://students-monitor.herokuapp.com/api/v0/auth/token/',
-          JSON.stringify({ username: user.username, password: user.password })
-        )
+      await this.$axios.$post(
+        'https://students-monitor.herokuapp.com/api/v0/auth/token/',
+        JSON.stringify({ username: user.username, password: user.password })
+      )
     )
 
     if (response && response.access_token) {
@@ -44,13 +42,12 @@ export const actions = {
     }
   },
   async logoutUser({ commit }) {
+    this.$axios.setHeader('Content-Type', 'application/json')
     const response = JSON.parse(
-      await this.$axios
-        .setHeader('Content-Type', 'application/json')
-        .$post(
-          'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
-          JSON.stringify({ token: state.user.access_token })
-        )
+      await this.$axios.$post(
+        'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
+        JSON.stringify({ token: state.user.access_token })
+      )
     )
 
     if (response && response.message === 'token revoked') {
@@ -65,13 +62,12 @@ export const actions = {
       this.$cookies.get('tokenExpires') &&
       this.$cookies.get('tokenExpires') < Date.now()
     ) {
+      this.$axios.setHeader('Content-Type', 'application/json')
       const response = JSON.parse(
-        await this.$axios
-          .setHeader('Content-Type', 'application/json')
-          .$post(
-            'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
-            JSON.stringify({ refresh_token: state.user.refresh_token })
-          )
+        await this.$axios.$post(
+          'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
+          JSON.stringify({ refresh_token: state.user.refresh_token })
+        )
       )
 
       if (response && response.access_token) {
