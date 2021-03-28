@@ -11,11 +11,10 @@ export const getters = {
 export const actions = {
   async registerUser({ commit }, user) {
     this.$axios.setHeader('Content-Type', 'application/json')
-    const rawResponse = await this.$axios.$post(
+    const response = await this.$axios.$post(
       'https://students-monitor.herokuapp.com/api/v0/auth/register/',
       JSON.stringify({ username: user.username, password: user.password })
     )
-    const response = JSON.parse(rawResponse)
 
     if (response && response.access_token) {
       commit('setUser', response)
@@ -26,11 +25,11 @@ export const actions = {
   },
   async authUser({ commit }, user) {
     this.$axios.setHeader('Content-Type', 'application/json')
-    const rawResponse = await this.$axios.$post(
+    const response = await this.$axios.$post(
       'https://students-monitor.herokuapp.com/api/v0/auth/token/',
       JSON.stringify({ username: user.username, password: user.password })
     )
-    const response = rawResponse
+    console.log(response)
     if (response && response.access_token) {
       commit('setUser', response)
       return true
@@ -40,11 +39,10 @@ export const actions = {
   },
   async logoutUser({ commit }) {
     this.$axios.setHeader('Content-Type', 'application/json')
-    const rawResponse = await this.$axios.$post(
+    const response = await this.$axios.$post(
       'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
       JSON.stringify({ token: state.user.access_token })
     )
-    const response = JSON.parse(rawResponse)
 
     if (response && response.message === 'token revoked') {
       commit('unsetUser')
@@ -59,11 +57,10 @@ export const actions = {
       this.$cookies.get('tokenExpires') < Date.now()
     ) {
       this.$axios.setHeader('Content-Type', 'application/json')
-      const rawResponse = await this.$axios.$post(
+      const response = await this.$axios.$post(
         'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
         JSON.stringify({ refresh_token: state.user.refresh_token })
       )
-      const response = JSON.parse(rawResponse)
 
       if (response && response.access_token) {
         commit('setUser', response)
