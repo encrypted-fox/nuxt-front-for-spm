@@ -82,14 +82,14 @@ export const actions = {
 }
 
 export const mutations = {
-  setUser({ state }, user) {
+  setUser(state, { user }) {
     state.user = user
 
     this.$cookies.set('authToken', user.accessToken)
     this.$cookies.set('refreshToken', user.refresh_token)
     this.$cookies.set('tokenExpires', Date.now() + user.expires_in)
   },
-  unsetUser({ state }) {
+  unsetUser(state) {
     state.user = {}
 
     this.$cookies.set('authToken', undefined)
