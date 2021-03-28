@@ -43,9 +43,10 @@ export default {
       authUser: 'auth/authUser',
     }),
     async handleLogin() {
-      console.log(this.login)
-      console.log(this.password)
-      const userLoggedIn = await this.authUser(this.login, this.password)
+      const userLoggedIn = await this.authUser({
+        username: this.login,
+        password: this.password,
+      })
       if (userLoggedIn) {
         await this.$router.push('/')
       } else {
