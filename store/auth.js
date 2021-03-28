@@ -1,3 +1,5 @@
+this.$axios.setHeader('Content-Type', 'application/json')
+
 export const state = () => ({
   user: {},
 })
