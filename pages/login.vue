@@ -29,8 +29,8 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      login: undefined,
-      password: undefined,
+      login: '',
+      password: '',
     }
   },
   head() {
