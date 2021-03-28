@@ -33,7 +33,7 @@ export const actions = {
         JSON.stringify({ username: user.username, password: user.password })
       )
     )
-
+    console.log(response)
     if (response && response.access_token) {
       commit('setUser', response)
       return true
