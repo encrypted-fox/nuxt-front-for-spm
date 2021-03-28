@@ -1,5 +1,5 @@
-export default ({ store, redirect }) => {
-  if (!store.getters['auth/getUserToken']) {
+export default async ({ store, redirect }) => {
+  if (!(await store.dispatch('auth/verifyAuth'))) {
     return redirect('/login')
   }
 }

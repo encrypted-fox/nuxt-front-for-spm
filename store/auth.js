@@ -3,12 +3,8 @@ export const state = () => ({
 })
 
 export const getters = {
-  async getUserToken({ state, dispatch }) {
-    if (await dispatch('auth/refreshUserToken')) {
-      return state.user.access_token
-    } else {
-      return false
-    }
+  getUserToken({ state }) {
+    return state.user.access_token
   },
 }
 
@@ -23,8 +19,9 @@ export const actions = {
 
     if (response && response.access_token) {
       commit('setUser', response)
+      return true
     } else {
-      return response
+      return false
     }
   },
   async authUser({ commit }, username, password) {
@@ -37,8 +34,9 @@ export const actions = {
 
     if (response && response.access_token) {
       commit('setUser', response)
+      return true
     } else {
-      return response
+      return false
     }
   },
   async logoutUser({ commit }) {
@@ -57,7 +55,10 @@ export const actions = {
     }
   },
   async refreshUserToken({ state, commit }) {
-    if (localStorage.getItem('tokenExpires') < Date.now()) {
+    if (
+      this.$cookies.get('tokenExpires') &&
+      this.$cookies.get('tokenExpires') < Date.now()
+    ) {
       const response = JSON.parse(
         await this.$axios.$post(
           'https://students-monitor.herokuapp.com/api/v0/auth/refresh/',
@@ -68,9 +69,15 @@ export const actions = {
       if (response && response.access_token) {
         commit('setUser', response)
         return true
-      } else {
-        return false
       }
+    }
+    return false
+  },
+  async verifyAuth({ state, dispatch }) {
+    if (await dispatch('refreshUserToken')) {
+      return state.user.access_token
+    } else {
+      return false
     }
   },
 }
@@ -79,15 +86,15 @@ export const mutations = {
   setUser({ state }, user) {
     state.user = user
 
-    localStorage.setItem('authToken', user.accessToken)
-    localStorage.setItem('refreshToken', user.refresh_token)
-    localStorage.setItem('tokenExpires', Date.now() + user.expires_in)
+    this.$cookies.set('authToken', user.accessToken)
+    this.$cookies.set('refreshToken', user.refresh_token)
+    this.$cookies.set('tokenExpires', Date.now() + user.expires_in)
   },
   unsetUser({ state }) {
     state.user = {}
 
-    localStorage.setItem('authToken', undefined)
-    localStorage.setItem('refreshToken', undefined)
-    localStorage.setItem('tokenExpires', undefined)
+    this.$cookies.set('authToken', undefined)
+    this.$cookies.set('refreshToken', undefined)
+    this.$cookies.set('tokenExpires', undefined)
   },
 }
