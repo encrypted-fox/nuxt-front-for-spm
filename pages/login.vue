@@ -2,9 +2,9 @@
   .login
     h1 Войдите
     form
-      input(placeholder='Логин' type='text' required)
+      input(placeholder='Логин' type='text' required v-model='login')
       hr
-      input(placeholder='Пароль' type='password' required)
+      input(placeholder='Пароль' type='password' required v-model='password')
       svg(width='100'
           height='100'
           viewBox='0 0 100 100'
@@ -25,15 +25,30 @@
       NuxtLink(to='/register')  Зарегистрируйтесь
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
+  data() {
+    return {
+      login: undefined,
+      password: undefined,
+    }
+  },
   head() {
     return {
       title: 'Войти',
     }
   },
   methods: {
-    handleLogin() {
-      alert('not yet')
+    ...mapActions({
+      authUser: 'auth/authUser',
+    }),
+    async handleLogin() {
+      const userLoggedIn = await this.authUser(this.login, this.password)
+      if (userLoggedIn) {
+        await this.$router.push('/')
+      } else {
+        console.log('[ERROR]: User not authenticated')
+      }
     },
   },
 }
