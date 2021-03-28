@@ -82,7 +82,7 @@ export const actions = {
 }
 
 export const mutations = {
-  setUser(state, { user }) {
+  setUser(state, user) {
     state.user = user
 
     this.$cookies.set('authToken', user.accessToken)
