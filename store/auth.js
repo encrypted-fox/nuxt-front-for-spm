@@ -9,11 +9,11 @@ export const getters = {
 }
 
 export const actions = {
-  async registerUser({ commit }, username, password) {
+  async registerUser({ commit }, user) {
     const response = JSON.parse(
       await this.$axios.$post(
         'https://students-monitor.herokuapp.com/api/v0/auth/register/',
-        JSON.stringify({ username, password })
+        JSON.stringify({ username: user.username, password: user.password })
       )
     )
 
@@ -24,11 +24,11 @@ export const actions = {
       return false
     }
   },
-  async authUser({ commit }, username, password) {
+  async authUser({ commit }, user) {
     const response = JSON.parse(
       await this.$axios.$post(
         'https://students-monitor.herokuapp.com/api/v0/auth/token/',
-        JSON.stringify({ username, password })
+        JSON.stringify({ username: user.username, password: user.password })
       )
     )
 
