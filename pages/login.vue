@@ -10,7 +10,7 @@
           viewBox='0 0 100 100'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
-          style="position: absolute; right: -50")
+          style="position: absolute; right: -50px")
           circle(cx='50' cy='50' r='50' fill='#202125')
       svg(class='svg'
           width='75'
