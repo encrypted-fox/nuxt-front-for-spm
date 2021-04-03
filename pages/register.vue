@@ -33,6 +33,7 @@
 import { mapActions } from 'vuex'
 
 export default {
+  layout: 'authLayout',
   data() {
     return {
       login: '',
