@@ -2,17 +2,24 @@
   p {{ excellentStudents }}
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapMutations } from 'vuex'
+
 export default {
-  // data() {
-  //   return {
-  //     excellentStudents: () => [],
-  //   }
-  // },
-  computed: {
-    ...mapGetters({
-      excellentStudents: 'reports/getStudentsWithExcellentMarks',
+  data() {
+    return {
+      excellentStudents: () => [],
+    }
+  },
+  methods: {
+    ...mapMutations({
+      setExcellentStudents: 'reports/setStudentsWithExcellentMarks',
     }),
   },
+  async fetch() {
+    this.excellentStudents = await fetch(
+      'https://students-monitor.herokuapp.com/api/v0/auth/list_excellent_students/'
+    ).then((res) => res.json())
+  },
+  fetchOnServer: false,
 }
 </script>
