@@ -3,11 +3,7 @@
     v-list-item(three-line)
       v-list-item-content
         v-list-item-title(class="headline mb-1") Всего отличников:
-        v-list-item-subtitle Greyhound divisely hello coldly fonwderfull)
-    v-list-item(three-line)
-      v-list-item-content
-        v-list-item-title(class="headline mb-1") Всего отличников:
-        v-list-item-subtitle Greyhound divisely hello coldly fonwderfull)
+      v-avatar {{ excellentStudents.length }}
     v-card-actions
       v-btn(outlined rounded text) Button
 </template>
