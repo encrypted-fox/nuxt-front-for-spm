@@ -9,8 +9,11 @@ export default {
   // },
   methods: {
     ...mapActions({
-      getExcellentStudents: 'reports/retrieveStudentsWithExcellentMarks',
+      retrieveExcellentStudents: 'reports/retrieveStudentsWithExcellentMarks',
     }),
+    async getExcellentStudents() {
+      return await this.retrieveExcellentStudents()
+    },
   },
 }
 </script>
