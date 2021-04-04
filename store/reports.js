@@ -3,7 +3,8 @@ export const state = () => ({
 })
 
 export const getters = {
-  getStudentsWithExcellentMarks({ state }) {
+  async getStudentsWithExcellentMarks({ state, dispatch }) {
+    await dispatch('retrieveStudentsWithExcellentMarks')
     return state.studentsWithExcellentMarks
   },
 }

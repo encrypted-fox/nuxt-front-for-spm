@@ -2,7 +2,7 @@
   p {{ excellentStudents }}
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   // data() {
   //   return {
@@ -13,16 +13,6 @@ export default {
     ...mapGetters({
       excellentStudents: 'reports/getStudentsWithExcellentMarks',
     }),
-  },
-  methods: {
-    ...mapActions({
-      retrieveExcellentStudents: 'reports/retrieveStudentsWithExcellentMarks',
-    }),
-  },
-  async mounted() {
-    if (!this.excellentStudents) {
-      this.studentsLoaded = await this.retrieveExcellentStudents()
-    }
   },
 }
 </script>
