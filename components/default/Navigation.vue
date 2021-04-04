@@ -18,8 +18,6 @@
       </v-btn>
     </v-list-item>
 
-    <v-divider></v-divider>
-
     <v-list dense>
       <v-list-item v-for="item in items" :key="item.title" link>
         <v-list-item-icon>
@@ -56,12 +54,11 @@ export default {
 <style lang="sass" scoped>
 @import "~@/assets/media.sass"
 @import "~@/assets/variables.sass"
+$navigation-drawer-border-width: 0px !important
 
 .navigation-container
   background-color: $form-color
-  .v-divider
-    display: none
-.v-navigation-drawer__border
+.theme--dark.v-navigation-drawer:not(.v-navigation-drawer--floating) .v-navigation-drawer__border
   display: none
 .navigation-link
   color: white
