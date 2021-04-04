@@ -1,10 +1,16 @@
 <template lang="pug">
-  div
+  p {{ getExcellentStudents() }}
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
-  data() {
-    return {}
+  // data() {
+  //   return {}
+  // },
+  methods: {
+    ...mapActions({
+      getExcellentStudents: 'reports/retrieveStudentsWithExcellentMarks',
+    }),
   },
 }
 </script>
