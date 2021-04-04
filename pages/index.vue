@@ -20,6 +20,5 @@ export default {
       setExcellentStudents: 'reports/setStudentsWithExcellentMarks',
     }),
   },
-  fetchOnServer: false,
 }
 </script>
