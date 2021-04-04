@@ -51,7 +51,7 @@ export default {
         password: this.password,
       })
       if (userLoggedIn) {
-        await this.$router.push('/')
+        await this.$router.push({ name: '' })
       } else {
         alert('[ERROR]: User not authenticated')
       }
