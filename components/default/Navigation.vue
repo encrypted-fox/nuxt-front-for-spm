@@ -1,5 +1,11 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app :mini-variant.sync="mini" permanent>
+  <v-navigation-drawer
+    v-model="drawer"
+    app
+    :mini-variant.sync="mini"
+    permanent
+    class="navigation-container"
+  >
     <v-list-item class="px-2">
       <v-list-item-avatar>
         <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
@@ -22,7 +28,7 @@
 
         <v-list-item-content>
           <v-list-item-title>
-            <NuxtLink to="item.link" class="navigation-link">{{
+            <NuxtLink :to="item.link" class="navigation-link">{{
               item.title
             }}</NuxtLink>
           </v-list-item-title>
@@ -37,9 +43,10 @@ export default {
     return {
       drawer: true,
       items: [
-        { title: 'Home', icon: 'mdi-home-city', link: '' },
-        { title: 'My Account', icon: 'mdi-account', link: '' },
-        { title: 'Users', icon: 'mdi-account-group-outline', link: '' },
+        { title: 'Доска отчётов', icon: 'mdi-home-city', link: '' },
+        { title: 'Аккаунт', icon: 'mdi-account', link: '' },
+        { title: 'Все отчёты', icon: 'mdi-account-group-outline', link: '' },
+        { title: 'Избранное', icon: 'mdi-account-group-outline', link: '' },
       ],
       mini: true,
     }
@@ -47,6 +54,11 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+@import "~@/assets/media.sass"
+@import "~@/assets/media.sass"
+
+.navigation-container
+  background-color: $background-color
 .navigation-link
   color: white
   text-decoration: none

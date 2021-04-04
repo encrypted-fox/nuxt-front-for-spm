@@ -5,7 +5,7 @@
         v-list-item-title(class="headline mb-1") Всего отличников:
       v-avatar(class="headline mb-1") {{ excellentStudents.length }}
     v-card-actions
-      v-btn(outlined rounded text) Button
+      v-btn(outlined rounded text @click='goToNextPage()') Подробнее
 </template>
 <script>
 import { mapMutations } from 'vuex'
@@ -28,6 +28,13 @@ export default {
     ...mapMutations({
       setExcellentStudents: 'reports/setStudentsWithExcellentMarks',
     }),
+    goToNextPage() {
+      this.$router.push({ name: 'excellent_students' })
+    },
   },
 }
 </script>
+<style lang="sass" scoped>
+@import "~@/assets/media.sass"
+@import "~@/assets/variables.sass"
+</style>

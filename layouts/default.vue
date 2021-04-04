@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-app
+  v-app(class='application')
     Navigation
     <!-- Sizes your content based upon application components -->
     v-main
@@ -21,3 +21,10 @@ export default {
   },
 }
 </script>
+<style lang="sass" scoped>
+@import "~@/assets/media.sass"
+@import "~@/assets/variables.sass"
+
+.application
+  background: $form-color
+</style>
