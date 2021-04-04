@@ -68,9 +68,8 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-$form-color: #16171b
-$input-text-color: #a3a4a8
-$background-color: #202125
+@import "~@/assets/media.sass"
+@import "~@/assets/variables.sass"
 
 body *
   margin: 0
@@ -114,7 +113,9 @@ body *
       border: 3px solid transparent
       border-radius: 10px
       width: 100%
-      margin-left: 8vw
+      margin-left: 6vw
+      @include phones
+        margin-left: 10vw
     input
       width: 85%
       height: 35%
