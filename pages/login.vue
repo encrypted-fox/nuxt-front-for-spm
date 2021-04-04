@@ -51,7 +51,7 @@ export default {
         password: this.password,
       })
       if (userLoggedIn) {
-        await this.$router.push({ name: '' })
+        window.location = 'http://encrypted-fox.ru'
       } else {
         alert('[ERROR]: User not authenticated')
       }
