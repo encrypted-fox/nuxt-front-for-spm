@@ -1,19 +1,24 @@
 <template lang="pug">
-  p {{ getExcellentStudents() }}
+  p {{ excellentStudents }}
 </template>
 <script>
 import { mapActions } from 'vuex'
 export default {
-  // data() {
-  //   return {}
-  // },
+  data() {
+    return {
+      excellentStudents: () => [],
+    }
+  },
   methods: {
     ...mapActions({
       retrieveExcellentStudents: 'reports/retrieveStudentsWithExcellentMarks',
     }),
     async getExcellentStudents() {
-      return await this.retrieveExcellentStudents()
+      await this.retrieveExcellentStudents()
     },
+  },
+  async mounted() {
+    this.excellentStudents = await this.retrieveExcellentStudents()
   },
 }
 </script>
