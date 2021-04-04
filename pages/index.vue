@@ -40,4 +40,7 @@ export default {
 
 .theme--dark.v-card
   background-color: $form-color
+
+.theme--dark.v-sheet--outlined
+  border-color: #ffffff25
 </style>
