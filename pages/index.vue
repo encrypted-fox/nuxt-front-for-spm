@@ -10,15 +10,15 @@ export default {
       excellentStudents: () => [],
     }
   },
+  async fetch() {
+    this.excellentStudents = await fetch(
+      'https://students-monitor.herokuapp.com/api/v0/list_excellent_students/'
+    ).then((res) => res.json())
+  },
   methods: {
     ...mapMutations({
       setExcellentStudents: 'reports/setStudentsWithExcellentMarks',
     }),
-  },
-  async fetch() {
-    this.excellentStudents = await fetch(
-      'https://students-monitor.herokuapp.com/api/v0/auth/list_excellent_students/'
-    ).then((res) => res.json())
   },
   fetchOnServer: false,
 }
