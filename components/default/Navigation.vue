@@ -4,6 +4,7 @@
     app
     :mini-variant.sync="mini"
     permanent
+    floating
     class="navigation-container"
   >
     <v-list-item class="px-2">
@@ -54,12 +55,9 @@ export default {
 <style lang="sass" scoped>
 @import "~@/assets/media.sass"
 @import "~@/assets/variables.sass"
-$navigation-drawer-border-width: 0px !important
 
 .navigation-container
   background-color: $form-color
-.theme--dark.v-navigation-drawer:not(.v-navigation-drawer--floating) .v-navigation-drawer__border
-  display: none
 .navigation-link
   color: white
   text-decoration: none
