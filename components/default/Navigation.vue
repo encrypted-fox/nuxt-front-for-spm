@@ -59,6 +59,10 @@ export default {
 
 .navigation-container
   background-color: $form-color
+  .v-divider
+    display: none
+  .v-navigation-drawer__border
+    display: none
 .navigation-link
   color: white
   text-decoration: none
