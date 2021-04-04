@@ -37,4 +37,7 @@ export default {
 <style lang="sass" scoped>
 @import "~@/assets/media.sass"
 @import "~@/assets/variables.sass"
+
+.theme--dark.v-card
+  background-color: $form-color
 </style>
