@@ -20,7 +20,9 @@ export default {
     }),
   },
   async mounted() {
-    this.studentsLoaded = await this.retrieveExcellentStudents()
+    if (!this.excellentStudents) {
+      this.studentsLoaded = await this.retrieveExcellentStudents()
+    }
   },
 }
 </script>
