@@ -3,7 +3,7 @@
     v-list-item(three-line)
       v-list-item-content
         v-list-item-title(class="headline mb-1") Всего отличников:
-      v-avatar {{ excellentStudents.length }}
+      v-avatar(class="headline mb-1") {{ excellentStudents.length }}
     v-card-actions
       v-btn(outlined rounded text) Button
 </template>
