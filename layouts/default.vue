@@ -26,5 +26,5 @@ export default {
 @import "~@/assets/variables.sass"
 
 .application
-  background: $form-color
+  background: $background-color
 </style>

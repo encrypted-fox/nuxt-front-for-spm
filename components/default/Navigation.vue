@@ -55,10 +55,10 @@ export default {
 </script>
 <style lang="sass" scoped>
 @import "~@/assets/media.sass"
-@import "~@/assets/media.sass"
+@import "~@/assets/variables.sass"
 
 .navigation-container
-  background-color: $background-color
+  background-color: $form-color
 .navigation-link
   color: white
   text-decoration: none
