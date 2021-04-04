@@ -43,10 +43,10 @@ export default {
     return {
       drawer: true,
       items: [
-        { title: 'Доска отчётов', icon: 'mdi-dashboard', link: '' },
+        { title: 'Доска отчётов', icon: 'mdi-view-dashboard', link: '' },
         { title: 'Аккаунт', icon: 'mdi-face', link: '' },
-        { title: 'Все отчёты', icon: 'mdi-auto-awesome-motion', link: '' },
-        { title: 'Избранное', icon: 'mdi-bookmarks', link: '' },
+        { title: 'Все отчёты', icon: 'mdi-clipboard-check-multiple', link: '' },
+        { title: 'Избранное', icon: 'mdi-star', link: '' },
       ],
       mini: true,
     }
