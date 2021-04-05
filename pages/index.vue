@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-card(max-width="344" outlined)
+  v-card(max-width="344" outlined id='card')
     v-list-item(three-line)
       v-list-item-content
         v-list-item-title(class="headline mb-1") Всего отличников:
@@ -9,7 +9,8 @@
 </template>
 <script>
 import { mapMutations } from 'vuex'
-
+import html2canvas from 'html2canvas'
+import JSPDF from 'jspdf'
 export default {
   data() {
     return {
@@ -29,7 +30,19 @@ export default {
       setExcellentStudents: 'reports/setStudentsWithExcellentMarks',
     }),
     goToNextPage() {
-      this.$router.push({ name: 'excellent_students' })
+      // this.$router.push({ name: 'excellent_students' })
+      this.printFacture()
+    },
+    printFacture() {
+      const pdf = new JSPDF()
+      const element = document.getElementById('card')
+      const width = element.style.width
+      const height = element.style.height
+      html2canvas(element).then((canvas) => {
+        const image = canvas.toDataURL('image/png')
+        pdf.addImage(image, 'JPEG', 15, 40, width, height)
+        pdf.save('facture' + '.pdf')
+      })
     },
   },
 }
