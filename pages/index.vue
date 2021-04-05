@@ -41,7 +41,7 @@ export default {
         const height = parseInt(element.style.height)
         html2canvas(element).then((canvas) => {
           const image = canvas.toDataURL('image/png')
-          pdf.addImage(image, 'JPEG', 15, 40, width, height)
+          pdf.addImage(image, 'JPEG', 15, 40, width / 2, height / 2)
           pdf.save('facture' + '.pdf')
         })
       }, 1000)
