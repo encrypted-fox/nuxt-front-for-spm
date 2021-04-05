@@ -34,15 +34,17 @@ export default {
       this.printFacture()
     },
     printFacture() {
-      const pdf = new JSPDF()
-      const element = document.getElementById('card')
-      const width = element.style.width
-      const height = element.style.height
-      html2canvas(element).then((canvas) => {
-        const image = canvas.toDataURL('image/png')
-        pdf.addImage(image, 'JPEG', 15, 40, width, height)
-        pdf.save('facture' + '.pdf')
-      })
+      setTimeout(() => {
+        const pdf = new JSPDF()
+        const element = document.getElementById('card')
+        const width = parseInt(element.style.width)
+        const height = parseInt(element.style.height)
+        html2canvas(element).then((canvas) => {
+          const image = canvas.toDataURL('image/png')
+          pdf.addImage(image, 'JPEG', 15, 40, width, height)
+          pdf.save('facture' + '.pdf')
+        })
+      }, 1000)
     },
   },
 }
