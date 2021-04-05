@@ -37,8 +37,8 @@ export default {
       setTimeout(() => {
         const pdf = new JSPDF('p', 'mm', 'a4')
         const element = document.getElementById('card')
-        const width = parseInt(element.style.width) / 2 + 'px'
-        const height = parseInt(element.style.height) / 2 + 'px'
+        const width = parseInt(element.style.width) / 4
+        const height = parseInt(element.style.height) / 4
         html2canvas(element).then((canvas) => {
           const image = canvas.toDataURL('image/png')
           pdf.addImage(image, 'JPEG', 0, 0, width, height)
