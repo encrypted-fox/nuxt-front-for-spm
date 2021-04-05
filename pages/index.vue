@@ -35,13 +35,13 @@ export default {
     },
     printFacture() {
       setTimeout(() => {
-        const pdf = new JSPDF()
+        const pdf = new JSPDF('p', 'mm', 'a4')
         const element = document.getElementById('card')
-        const width = parseInt(element.style.width)
-        const height = parseInt(element.style.height)
+        const width = pdf.internal.pageSize.getWidth()
+        const height = pdf.internal.pageSize.getWidth()
         html2canvas(element).then((canvas) => {
           const image = canvas.toDataURL('image/png')
-          pdf.addImage(image, 'JPEG', 15, 40, width / 2, height / 2)
+          pdf.addImage(image, 'JPEG', 0, 0, width, height)
           pdf.save('facture' + '.pdf')
         })
       }, 1000)
